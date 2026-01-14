@@ -1,15 +1,15 @@
-#define _CRT_SECURE_NO_DEPRECATE
+п»ї#define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include "func.h"
 
- // Сумма модулей элементов после элемента с максимальным модулем
+ // РЎСѓРјРјР° РјРѕРґСѓР»РµР№ СЌР»РµРјРµРЅС‚РѕРІ РїРѕСЃР»Рµ СЌР»РµРјРµРЅС‚Р° СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј РјРѕРґСѓР»РµРј
 
 int sum_abs_after_max(int* arr, int n) {
     if (n <= 0) return 0;
 
-    // Находим индекс максимального по модулю
+    // РќР°С…РѕРґРёРј РёРЅРґРµРєСЃ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ РїРѕ РјРѕРґСѓР»СЋ
     int max_mod_idx = 0;
     for (int i = 1; i < n; i++) {
         if (abs(arr[i]) > abs(arr[max_mod_idx])) {
@@ -17,7 +17,7 @@ int sum_abs_after_max(int* arr, int n) {
         }
     }
 
-    // Сумма модулей после него
+    // РЎСѓРјРјР° РјРѕРґСѓР»РµР№ РїРѕСЃР»Рµ РЅРµРіРѕ
     int sum = 0;
     for (int i = max_mod_idx + 1; i < n; i++) {
         sum += abs(arr[i]);
@@ -26,7 +26,7 @@ int sum_abs_after_max(int* arr, int n) {
 }
 
 
-// Поиск индекса максимального элемента < A 
+// РџРѕРёСЃРє РёРЅРґРµРєСЃР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° < A 
 
 int find_max_less_A(int* arr, int n, int A) {
     if (n <= 0) return -1;
@@ -44,16 +44,16 @@ int find_max_less_A(int* arr, int n, int A) {
 }
 
 
- // Создание массива D без минимальных значений из A, B, C
+ // РЎРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° D Р±РµР· РјРёРЅРёРјР°Р»СЊРЅС‹С… Р·РЅР°С‡РµРЅРёР№ РёР· A, B, C
 
 int* create_array_d(int* a, int na, int* b, int nb, int* c, int nc, int* size_d) {
-    // Находим минимумы
+    // РќР°С…РѕРґРёРј РјРёРЅРёРјСѓРјС‹
     int min_a = a[0], min_b = b[0], min_c = c[0];
     for (int i = 1; i < na; i++) if (a[i] < min_a) min_a = a[i];
     for (int i = 1; i < nb; i++) if (b[i] < min_b) min_b = b[i];
     for (int i = 1; i < nc; i++) if (c[i] < min_c) min_c = c[i];
 
-    // Вычисляем размер D
+    // Р’С‹С‡РёСЃР»СЏРµРј СЂР°Р·РјРµСЂ D
     *size_d = 0;
     for (int i = 0; i < na; i++) if (a[i] != min_a) (*size_d)++;
     for (int i = 0; i < nb; i++) if (b[i] != min_b) (*size_d)++;
@@ -63,7 +63,7 @@ int* create_array_d(int* a, int na, int* b, int nb, int* c, int nc, int* size_d)
     if (!d) return NULL;
 
     int k = 0;
-    // Копируем без минимумов
+    // РљРѕРїРёСЂСѓРµРј Р±РµР· РјРёРЅРёРјСѓРјРѕРІ
     for (int i = 0; i < na; i++) if (a[i] != min_a) d[k++] = a[i];
     for (int i = 0; i < nb; i++) if (b[i] != min_b) d[k++] = b[i];
     for (int i = 0; i < nc; i++) if (c[i] != min_c) d[k++] = c[i];
